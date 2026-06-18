@@ -161,9 +161,9 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 }
-
+# data.aws_ami.ubuntu.id
 resource "aws_instance" "bastion" {
-  ami                         = data.aws_ami.ubuntu.id
+  ami                         = "ami-03d84abcde942cf8c"
   instance_type               = "t3.micro"
   subnet_id                   = aws_subnet.public[0].id
   vpc_security_group_ids      = [aws_security_group.bastion_sg.id]
@@ -203,10 +203,10 @@ resource "aws_iam_instance_profile" "ai_profile" {
   name = "ai-inference-profile-${random_id.id.hex}"
   role = aws_iam_role.ai_role.name
 }
-
+# r5.2xlarge | g4dn.xlarge | t3.large
 resource "aws_instance" "gpu_node" {
-  ami                    = data.aws_ami.deep_learning.id
-  instance_type          = "g4dn.xlarge" 
+  ami                    = "ami-03d84abcde942cf8c"
+  instance_type          = "t3.large" 
   subnet_id              = aws_subnet.private[0].id
   vpc_security_group_ids = [aws_security_group.gpu_sg.id]
   key_name               = aws_key_pair.lab_key.key_name

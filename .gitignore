@@ -12,6 +12,7 @@ override.tf.json
 *_override.tf.json
 .terraformrc
 terraform.rc
+.terraform.lock.hcl
 
 # SSH Keys
 lab-key
@@ -20,3 +21,7 @@ lab-key.pub
 # Environment Variables
 .env
 .env.local
+
+# Private Items
+track2-lab-user_accessKeys.csv
+kaggle.json
